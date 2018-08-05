@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="chapter01.mapper.UserMapper">
+    <select id="getUserById" parameterType="java.lang.String"
+            resultType="chapter01.pojo.User">
+        select user_id as userId, user_name as userName from user_t where user_id=#{userId}
+    </select>
+    <!--<insert id="insertUser" parameterType="chapter01.pojo.User"> -->
+      <!--insert into user_t(user_id,user_name) values (#{userId,jdbcType=VARCHAR},#{userName,jdbcType=VARCHAR})-->
+    <!--</insert>-->
+    <insert id="insertUser" parameterType="chapter01.pojo.User" >
+        insert into user_t (user_id, user_name)
+        values (#{userId,jdbcType=INTEGER}, #{userName,jdbcType=VARCHAR})
+    </insert>
+</mapper>
